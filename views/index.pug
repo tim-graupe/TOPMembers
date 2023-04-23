@@ -1,0 +1,44 @@
+extends layout
+
+block content
+
+
+  h1(class="title") Secret secret club
+
+  if user
+    div(class="top-nav")
+      p Hello #{user.username}! 
+      a(href="/log-out")(class="logout") Logout
+      br
+      p Got something to say? 
+      a(href="/newmessage") Speak
+
+    
+    ul
+      each msg in messages
+        div(class="msg-div")
+          h4 #{msg.title}
+          p #{msg.message} said by #{msg.user.username}
+          p #{msg.date_posted_formatted}
+        if user.admin === "deuce"
+          form(method="POST" action="")
+            div.delete-form
+              input(type="hidden", name="msgid" required="true", value="msg._id")
+              button(type='submit') Delete
+
+
+
+      
+  else
+    ul(class="msg-div")
+      each msg in messages
+        h4 #{msg.title}
+        p #{msg.message} said by Anonymous
+    p 
+      a(href="/signup") Sign up
+        
+
+    p 
+      a(href="/login") Login
+
+

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  if user
+    p Hello #{user.username} 
+    a(href="/log-out") Logout
+    br
+    a(href="/") Back
+    br
+    
+    form(method='POST' action='')
+      p Message Title
+      input(type="text" name="title")
+      p Message Content
+      textarea(name="message", cols="30", rows="10") 
+      br
+      br
+      input(type="submit" value="Submit")

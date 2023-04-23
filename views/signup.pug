@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1 Welcome!
+    p #{title}
+    div.form-container
+        form.auth-form(action="" method="POST")
+            p Username
+            input(type="input" name="username")
+            if (userError) 
+                p(style="color: red") #{userError}
+            p Password
+            input(type="password" name="password")
+            if (passwordError)
+                p(style="color: red") #{passwordError}
+            p Admin code
+            input(type="password" name="admin")
+            p I am not a bot. I know this because I clicked the box below
+            input(type="checkbox" name="member")
+            br
+            input(type="submit" value="OK")
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
+            
