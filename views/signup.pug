@@ -1,7 +1,11 @@
 extends layout
 
-
 block content
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Some description')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     h1(style="color: white")  Welcome!
     p(class="signup-info") Enter your username and password below. Enter the admin code for admin privileges. Usernames must be between 2-24 characters. Passwords must be at least six characters
     a(href="/login") Already a member?
@@ -23,4 +27,4 @@ block content
         ul
             for error in errors
                 li!= error.msg
-            
+        

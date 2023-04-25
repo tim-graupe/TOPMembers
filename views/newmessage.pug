@@ -1,20 +1,31 @@
 extends layout
 
 block content
-  if user
-    p Hello #{user.username} 
-    a(href="/log-out") Logout
-    br
-    a(href="/") Back
-    br
-    
-    form(method='POST' action='')
-      p(class="new-msg-info") Message Title
-      input(type="text" name="title")
-      p(class="new-msg-info") Message Content
-      textarea(name="message", cols="30", rows="10") 
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Some description')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1&display=swap" rel="stylesheet")
+  body
+  div.form-container
+    if user
+      p Hello #{user.username} 
+      a(href="/log-out") Logout
       br
+      a(href="/") Back
       br
-      input(type="submit" value="Submit")
-  else
-    a(href="/") Please login first
+      
+      form(method='POST' action='')
+        p(class="new-msg-info") Message Title
+        input(type="text" name="title")
+        p(class="new-msg-info") Message Content
+        textarea(name="message", cols="30", rows="10") 
+        br
+        br
+        input(type="submit" value="Submit")
+    else
+      a(href="/") Please login first

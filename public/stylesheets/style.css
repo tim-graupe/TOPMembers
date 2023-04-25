@@ -1,5 +1,5 @@
 body {
-  font-family: 'Bruno Ace SC', cursive;
+  font-family: 'Ysabeau', sans-serif;
   background-color: rgb(0, 153, 204);
 }
 
@@ -17,6 +17,10 @@ a {
 .title {
   text-align: center;
   color: white;
+}
+
+.msg-container {
+  height: 100px;
 }
 
 .msg-div {
@@ -38,4 +42,9 @@ a {
 
 p {
   color: rgb(0, 153, 204)
+}
+
+
+div.form-container {
+  text-align: center;
 }
