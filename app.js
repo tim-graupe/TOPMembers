@@ -54,9 +54,10 @@ app.use(
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
+const mongoDB = process.env.MONGODB_URI || DB_URI;
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(process.env.DB_URI);
+  await mongoose.connect(mongoDB);
 }
 //passport
 passport.use(
