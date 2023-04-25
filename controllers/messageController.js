@@ -13,9 +13,9 @@ exports.newmessage_post = [
     .withMessage("Title must be between 1-24 chars"),
   body("message")
     .trim()
-    .isLength({ min: 1, max: 140 })
+    .isLength({ min: 1, max: 1000 })
     .escape()
-    .withMessage("Message must be between 1-140 chars"),
+    .withMessage("Message must be between 1-1000 chars"),
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

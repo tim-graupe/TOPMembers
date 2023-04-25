@@ -1,11 +1,17 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(0, 153, 204)
+  font-family: 'Bruno Ace SC', cursive;
+  background-color: rgb(0, 153, 204);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: yellow;
+  padding: 10px;
 }
 
 .title {
@@ -13,17 +19,23 @@ a {
   color: white;
 }
 
-
-.logout {
-  float: right;
-}
-
 .msg-div {
-  color: white;
+  color: rgb(0, 153, 204);
   border: 1px white dashed;
   border-radius: 10px;
+  background-color: white;
+  margin-top: 5%;
+}
+
+
+.msg-author,
+.login-info,
+.signup-info,
+.home-info,
+.new-msg-info {
+  color: white;
 }
 
 p {
-  color: white;
+  color: rgb(0, 153, 204)
 }

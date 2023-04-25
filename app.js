@@ -14,7 +14,10 @@ const loginRouter = require("./routes/login");
 const messageRouter = require("./routes/newmessage");
 const User = require("./models/user");
 const bcrypt = require("bcrypt");
+const compression = require("compression");
+const helmet = require("helmet");
 const app = express();
+app.use(compression());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,6 +32,23 @@ app.use("/users", usersRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/newmessage", messageRouter);
+
+// Set up rate limiter: maximum of twenty requests per minute
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  })
+);
 
 // Set up mongoose connection
 const mongoose = require("mongoose");

@@ -1,44 +1,46 @@
 extends layout
 
 block content
+  head
+    style
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+  body
+    h1(class="title") #{title}
 
+    if user
+      div(class="top-nav")
+        p(class="home-info") Hello #{user.username}! 
+        a(href="/log-out")(class="logout") Not #{user.username}? Logout
+        p(class="home-info") Got something to say? 
+        a(href="/newmessage") Speak your mind!
 
-  h1(class="title") Secret secret club
-
-  if user
-    div(class="top-nav")
-      p Hello #{user.username}! 
-      a(href="/log-out")(class="logout") Logout
-      br
-      p Got something to say? 
-      a(href="/newmessage") Speak
-
-    
-    ul
+      
+      ul
       each msg in messages
         div(class="msg-div")
-          h4 #{msg.title}
-          p #{msg.message} said by #{msg.user.username}
-          p #{msg.date_posted_formatted}
+          h1 #{msg.title}
+          p #{msg.message}
+        p(class="msg-author") Posted by #{msg.user.username} on #{msg.date_posted_formatted}
+        //- horrible idea to put the admin code here :)
         if user.admin === "deuce"
           form(method="POST" action="")
             div.delete-form
               input(type="hidden", name="msgid" required="true", value="msg._id")
-              button(type='submit') Delete
-
-
-
-      
-  else
-    ul(class="msg-div")
-      each msg in messages
-        h4 #{msg.title}
-        p #{msg.message} said by Anonymous
-    p 
+              button(type='submit') Delete      
+    else
+      p 
       a(href="/signup") Sign up
-        
-
-    p 
+      p 
       a(href="/login") Login
+      h4(class="home-info") Login to view who posted each message!
+      ul
+      each msg in messages
+        div(class="msg-div")
+          h1 #{msg.title}
+          p #{msg.message}
+        p(class="msg-author") Posted by Anonymous
+
 
 

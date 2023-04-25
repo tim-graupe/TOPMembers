@@ -1,22 +1,22 @@
 extends layout
 
+
 block content
-    h1 Welcome!
-    p #{title}
+    h1(style="color: white")  Welcome!
+    p(class="signup-info") Enter your username and password below. Enter the admin code for admin privileges. Usernames must be between 2-24 characters. Passwords must be at least six characters
+    a(href="/login") Already a member?
     div.form-container
         form.auth-form(action="" method="POST")
-            p Username
+            p(class="signup-info") Username
             input(type="input" name="username")
             if (userError) 
                 p(style="color: red") #{userError}
-            p Password
+            p(class="signup-info") Password
             input(type="password" name="password")
             if (passwordError)
                 p(style="color: red") #{passwordError}
-            p Admin code
+            p(class="signup-info") Admin code
             input(type="password" name="admin")
-            p I am not a bot. I know this because I clicked the box below
-            input(type="checkbox" name="member")
             br
             input(type="submit" value="OK")
     if errors

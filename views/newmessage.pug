@@ -9,10 +9,12 @@ block content
     br
     
     form(method='POST' action='')
-      p Message Title
+      p(class="new-msg-info") Message Title
       input(type="text" name="title")
-      p Message Content
+      p(class="new-msg-info") Message Content
       textarea(name="message", cols="30", rows="10") 
       br
       br
       input(type="submit" value="Submit")
+  else
+    a(href="/") Please login first

@@ -8,7 +8,7 @@ const MessageSchema = new Schema({
     type: String,
     required: true,
     minLength: 1,
-    maxLength: 140,
+    maxLength: 1000,
   },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   date_posted: { type: Date, default: Date.now },
